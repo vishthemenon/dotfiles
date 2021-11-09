@@ -112,6 +112,14 @@ global commands
 * setup.sh - Clones the repositories in the .list files at the corresponding
 locations
 
+### Iterm2 (iterm2/)
+* com.googlecode.iterm2.plist - Iterm2 preference file
+* setup.sh - Links the preference file to the home directory
+
+### ASDF (asdf/)
+* (ruby|python).list - Lists of asdf package versions
+* setup.sh - Installs the listed asdf plugins and packages
+
 ### Helper Scripts (scripts/)
 * functions.sh - Contains helper functions for symlinking files and printing
   progress messages
