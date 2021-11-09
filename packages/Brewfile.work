@@ -1,0 +1,2 @@
+brew 'graphviz'
+brew 'jq'

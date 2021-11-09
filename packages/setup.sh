@@ -13,9 +13,6 @@ info "Installing Brewfile packages..."
 brew bundle
 success "Finished installing Brewfile packages."
 
-fnm use 10
-success "Switched to Node v10"
-
 find * -name "*.list" | while read fn; do
     cmd="${fn%.*}"
     set -- $cmd
