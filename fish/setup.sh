@@ -14,9 +14,11 @@ substep_info "Creating fish config folders..."
 mkdir -p "$DESTINATION/functions"
 mkdir -p "$DESTINATION/completions"
 
-find * -name "*.fish" -o -name "fishfile" | while read fn; do
+find * -name "*.fish" -o -name "fish_plugins" | while read fn; do
     symlink "$SOURCE/$fn" "$DESTINATION/$fn"
 done
+
+symlink "$SOURCE/functions/greeting.ascii" "$DESTINATION/functions/greeting.ascii"
 clear_broken_symlinks "$DESTINATION"
 
 set_fish_shell() {
@@ -41,6 +43,11 @@ set_fish_shell() {
             substep_error "Failed changing shell to fish"
             return 2
         fi
+
+        substep_info "Installing fisher package manager"
+        curl -sL https://git.io/fisher | source && fisher install jorgebucaran/fisher
+
+        
         substep_info "Running fish initial setup"
         fish -c "setup"
     fi
